@@ -23,7 +23,13 @@ class Post extends Controller {
 
     public function store()
     {
-        
+        if($this->model('PostModel')->storePost($_POST) > 0) {
+            redirect('post/index');
+            exit;
+        } else {
+            var_dump("Error");
+            redirect('post/index');
+        }
     }
 }
 

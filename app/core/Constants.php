@@ -8,3 +8,5 @@ define("DB_HOST", 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'pwpb_mvc2');
+
+// const DB_HOST = 'localhost';

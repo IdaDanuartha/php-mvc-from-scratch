@@ -26,16 +26,16 @@ class PostModel {
     public function storePost($data) {
         $query = "INSERT INTO {$this->table}
                     VALUES
-                ('', :title, :category_id, :user_id, :content)";
+                (null, :title, :category_id, :user_id, :content, null, null)";
 
         $this->db->query($query);
         $this->db->bind('title', $data['title']);
         $this->db->bind('category_id', $data['category_id']);
-        $this->db->bind('user_id', $data['user_id']);
+        $this->db->bind('user_id', 1);
         $this->db->bind('content', $data['content']);
 
         $this->db->execute();
-
+        
         return $this->db->rowCount();
     }
 
@@ -44,6 +44,7 @@ class PostModel {
         $query = "UPDATE {$this->table} SET
                 title = :title,
                 category_id = :category_id,                
+                user_id = :user_id,                
                 content = :content,                
                 updated_at = :updated_at,                
               WHERE id = :id";
@@ -51,6 +52,7 @@ class PostModel {
         $this->db->query($query);
         $this->db->bind('title', $data['title']);
         $this->db->bind('category_id', $data['category_id']);
+        $this->db->bind('user_id', 1);
         $this->db->bind('content', $data['content']);
         $this->db->bind('updated_at', date('Y-m-d H:i:s'));
         $this->db->bind('id', $data['id']);
