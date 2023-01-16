@@ -25,7 +25,6 @@ class Post extends Controller {
     {
         if($this->model('PostModel')->storePost($_POST) > 0) {
             redirect('post/index');
-            exit;
         } else {
             var_dump("Error");
         }
@@ -46,7 +45,6 @@ class Post extends Controller {
     {
         if($this->model('PostModel')->updatePost($_POST, $id) > 0) {
             redirect('post/index');
-            exit;
         } else {
             var_dump("Error");
         }
@@ -56,7 +54,6 @@ class Post extends Controller {
     {
         if($this->model('PostModel')->destroyPost($id) > 0) {
             redirect('post/index');
-            exit;
         } else {
             var_dump("Error");
         }

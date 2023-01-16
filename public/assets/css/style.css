@@ -6,6 +6,21 @@ main {
     margin-left: 17vw;    
 }
 
+.alert-danger {
+    background-color: #f8d7da;
+    color: #be627e;
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: 2px solid #be627e;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #5fa58c;
+    padding: 20px 30px;
+    border-radius: 5px;
+    border: 2px solid #5fa58c;
+}
 
   
 @media (max-width: 768px) {
