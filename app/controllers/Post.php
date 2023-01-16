@@ -3,22 +3,30 @@
 class Post extends Controller {
     public function index()
     {
-        $data['title'] = "Post page";
-        $data['posts'] = $this->model('PostModel')->getPosts();
-        
-        $this->view('templates/header', $data);
-        $this->view('post/index', $data);
-        $this->view('templates/footer', $data);
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Post page";
+            $data['posts'] = $this->model('PostModel')->getPosts();
+            
+            $this->view('templates/header', $data);
+            $this->view('post/index', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }       
     }
 
     public function create()
     {
-        $data['title'] = "Add Post";
-        $data['categories'] = $this->model('CategoryModel')->getCategories();
-        
-        $this->view('templates/header', $data);
-        $this->view('post/create', $data);
-        $this->view('templates/footer', $data);
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Add Post";
+            $data['categories'] = $this->model('CategoryModel')->getCategories();
+            
+            $this->view('templates/header', $data);
+            $this->view('post/create', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }
     }
 
     public function store()
@@ -32,13 +40,17 @@ class Post extends Controller {
 
     public function edit($id)
     {
-        $data['title'] = "Edit Post";
-        $data['categories'] = $this->model('CategoryModel')->getCategories();
-        $data['post'] = $this->model('PostModel')->getPost($id);
-        
-        $this->view('templates/header', $data);
-        $this->view('post/edit', $data);
-        $this->view('templates/footer', $data);
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Edit Post";
+            $data['categories'] = $this->model('CategoryModel')->getCategories();
+            $data['post'] = $this->model('PostModel')->getPost($id);
+            
+            $this->view('templates/header', $data);
+            $this->view('post/edit', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }
     }
 
     public function update($id)

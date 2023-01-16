@@ -3,7 +3,7 @@
 class Auth extends Controller {
     public function login()
     {
-        $_SESSION['isLogged'] = false;
+        // $_SESSION['isLogged'] = false;
         if(!$_SESSION['isLogged']) {
             $data['title'] = "Login page";
             $data['message'] = "";
@@ -16,7 +16,7 @@ class Auth extends Controller {
 
     public function register()
     {    
-        $_SESSION['isLogged'] = false;
+        // $_SESSION['isLogged'] = false;
         if(!$_SESSION['isLogged']) {
             $data['title'] = "Register page";
             $data['message'] = "";
@@ -29,12 +29,18 @@ class Auth extends Controller {
 
     public function registerProcess()
     {
-        if($this->model('UserModel')->storeUser($_POST) > 0) {
-            redirect('auth/login');
-        } else {            
-            $data['title'] = 'Login page';
-            $data['message'] = 'Register Failed';
+        if($this->model('UserModel')->findUserByEmail($_POST['email'])) {
+            $data['title'] = 'Register page';
+            $data['message'] = 'Email already exist';
             $this->view('auth/register', $data);
+        } else {
+            if($this->model('UserModel')->storeUser($_POST) > 0) {
+                redirect('auth/login');
+            } else {            
+                $data['title'] = 'Register page';
+                $data['message'] = 'Register Failed';
+                $this->view('auth/register', $data);
+            }
         }
     }
     
@@ -44,6 +50,13 @@ class Auth extends Controller {
             $loginInUser = $this->model('UserModel')->login($_POST);
             if($loginInUser) {
                 $this->model("UserModel")->session($loginInUser);
+
+                if($_SESSION['level'] == 'admin') {
+                    redirect("");
+                } else {
+                    redirect("/home/index");
+                }
+
             } else {
                 $data['title'] = 'Login page';
                 $data['message'] = 'Email or Password Incorrect';

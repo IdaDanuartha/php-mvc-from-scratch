@@ -61,9 +61,8 @@ class UserModel {
         $_SESSION['id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['email'] = $user['email'];
-        $_SESSION['isLogged'] = true;
-
-        header('Location: ' . BASE_URL);
+        $_SESSION['level'] = $user['level'];
+        $_SESSION['isLogged'] = true;        
     }
 
 }

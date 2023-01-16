@@ -1,6 +1,6 @@
 <?php 
 
-class HomeModel {
+class DashboardModel {
     private $table1 = 'posts',
             $table2 = 'categories',
             $table3 = 'users',

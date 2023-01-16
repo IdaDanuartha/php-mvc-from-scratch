@@ -3,21 +3,29 @@
 class Category extends Controller {
     public function index()
     {
-        $data['title'] = "Category page";
-        $data['categories'] = $this->model('CategoryModel')->getCategories();
-        
-        $this->view('templates/header', $data);
-        $this->view('category/index', $data);
-        $this->view('templates/footer', $data);
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Category page";
+            $data['categories'] = $this->model('CategoryModel')->getCategories();
+            
+            $this->view('templates/header', $data);
+            $this->view('category/index', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }        
     }
 
     public function create()
     {
-        $data['title'] = "Add Category";
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Add Category";
         
-        $this->view('templates/header', $data);
-        $this->view('category/create', $data);
-        $this->view('templates/footer', $data);
+            $this->view('templates/header', $data);
+            $this->view('category/create', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }        
     }
 
     public function store()
@@ -31,12 +39,16 @@ class Category extends Controller {
 
     public function edit($id)
     {
-        $data['title'] = "Edit Post";
-        $data['category'] = $this->model('CategoryModel')->getCategory($id);
-        
-        $this->view('templates/header', $data);
-        $this->view('category/edit', $data);
-        $this->view('templates/footer', $data);
+        if($_SESSION['isLogged']) {
+            $data['title'] = "Edit Post";
+            $data['category'] = $this->model('CategoryModel')->getCategory($id);
+            
+            $this->view('templates/header', $data);
+            $this->view('category/edit', $data);
+            $this->view('templates/footer', $data);
+        } else {
+            redirect('auth/login');
+        }        
     }
 
     public function update($id)
