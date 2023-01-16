@@ -1,5 +1,9 @@
+body {
+    overflow-x: hidden;
+}
+
 main {
-    margin-left: 17vw;
+    margin-left: 17vw;    
 }
 
 

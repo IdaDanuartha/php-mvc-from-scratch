@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/dashboard.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 
-    <title>PWPB PHP MVC</title>
+    <title><?= $data['title'] ?> | PWPB PHP MVC</title>
 </head>
 <body>
 
@@ -59,4 +59,4 @@
       </div>
     </nav>
 
-    <main class="mt-4">
+    <main class="mt-4 me-4 w-75">
