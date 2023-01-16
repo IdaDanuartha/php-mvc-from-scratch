@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/dashboard.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+
+    <title>PWPB PHP MVC</title>
 </head>
 <body>
 
@@ -36,9 +38,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?= (URL == BASE_URL . '/blog/index') ? 'active' : ''; ?>" href="<?= BASE_URL ?>/blog/index">
+            <a class="nav-link <?= (URL == BASE_URL . '/post/index') ? 'active' : ''; ?>" href="<?= BASE_URL ?>/post/index">
               <span data-feather="file" class="align-text-bottom"></span>
-              Blog
+              Post
             </a>
           </li>
           <li class="nav-item">
@@ -56,3 +58,5 @@
         </ul>          
       </div>
     </nav>
+
+    <main class="mt-4">
