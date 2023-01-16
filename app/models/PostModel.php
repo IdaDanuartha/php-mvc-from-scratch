@@ -23,6 +23,16 @@ class PostModel {
         return $this->db->all();
     }
 
+    public function getPost($id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id=:id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        return $this->db->single();
+    }
+
     public function storePost($data) {
         $query = "INSERT INTO {$this->table}
                     VALUES
@@ -39,23 +49,20 @@ class PostModel {
         return $this->db->rowCount();
     }
 
-    public function updatePost($data) {
+    public function updatePost($data, $id) {
 
         $query = "UPDATE {$this->table} SET
                 title = :title,
                 category_id = :category_id,                
-                user_id = :user_id,                
-                content = :content,                
-                updated_at = :updated_at,                
-              WHERE id = :id";
+                content = :content,
+                updated_at = :updated_at
+              WHERE id = $id";
 
         $this->db->query($query);
         $this->db->bind('title', $data['title']);
         $this->db->bind('category_id', $data['category_id']);
-        $this->db->bind('user_id', 1);
         $this->db->bind('content', $data['content']);
         $this->db->bind('updated_at', date('Y-m-d H:i:s'));
-        $this->db->bind('id', $data['id']);
 
         $this->db->execute();
 
