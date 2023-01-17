@@ -32,9 +32,10 @@ class Post extends Controller {
     public function store()
     {
         if($this->model('PostModel')->storePost($_POST) > 0) {
+            Flasher::setFlash("Post created successfully", "success");
             redirect('post/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Post created failed", "danger");
         }
     }
 
@@ -56,18 +57,20 @@ class Post extends Controller {
     public function update($id)
     {
         if($this->model('PostModel')->updatePost($_POST, $id) > 0) {
+            Flasher::setFlash("Post updated successfully", "success");
             redirect('post/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Post updated failed", "danger");
         }
     }
 
     public function destroy($id)
     {
         if($this->model('PostModel')->destroyPost($id) > 0) {
+            Flasher::setFlash("Post deleted successfully", "success");
             redirect('post/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Post deleted failed", "danger");
         }
     }
 }

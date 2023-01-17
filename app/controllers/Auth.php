@@ -6,7 +6,6 @@ class Auth extends Controller {
         // $_SESSION['isLogged'] = false;
         if(!$_SESSION['isLogged']) {
             $data['title'] = "Login page";
-            $data['message'] = "";
         
             $this->view('auth/login', $data);
         } else {
@@ -19,7 +18,6 @@ class Auth extends Controller {
         // $_SESSION['isLogged'] = false;
         if(!$_SESSION['isLogged']) {
             $data['title'] = "Register page";
-            $data['message'] = "";
         
             $this->view('auth/register', $data);
         } else {
@@ -30,16 +28,15 @@ class Auth extends Controller {
     public function registerProcess()
     {
         if($this->model('UserModel')->findUserByEmail($_POST['email'])) {
-            $data['title'] = 'Register page';
-            $data['message'] = 'Email already exist';
-            $this->view('auth/register', $data);
+            Flasher::setFlash("Email already exist", "danger");
+            redirect('auth/register');
         } else {
             if($this->model('UserModel')->storeUser($_POST) > 0) {
+                Flasher::setFlash("Account created successfully", "success");
                 redirect('auth/login');
             } else {            
-                $data['title'] = 'Register page';
-                $data['message'] = 'Register Failed';
-                $this->view('auth/register', $data);
+                Flasher::setFlash("Register failed", "danger");
+                redirect('auth/register');
             }
         }
     }
@@ -52,20 +49,19 @@ class Auth extends Controller {
                 $this->model("UserModel")->session($loginInUser);
 
                 if($_SESSION['level'] == 'admin') {
-                    redirect("");
+                    Flasher::setFlash("Hello, welcome back admin", "success");
+                    redirect("dashboard/index");
                 } else {
-                    redirect("/home/index");
+                    redirect("home/index");
                 }
 
             } else {
-                $data['title'] = 'Login page';
-                $data['message'] = 'Email or Password Incorrect';
-                $this->view('auth/login', $data);
+                Flasher::setFlash("Email or Password incorrect", "danger");
+                redirect("auth/login");
             }
         } else {
-            $data['title'] = 'Login page';
-            $data['message'] = 'Email Not Found';
-            $this->view('auth/login', $data);
+            Flasher::setFlash("Email not found", "danger");
+            redirect("auth/login");
         }
     }
 

@@ -31,9 +31,10 @@ class Category extends Controller {
     public function store()
     {
         if($this->model('CategoryModel')->storeCategory($_POST) > 0) {
+            Flasher::setFlash("Category created successfully", "success");
             redirect('category/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Category created failed", "danger");
         }
     }
 
@@ -54,18 +55,20 @@ class Category extends Controller {
     public function update($id)
     {
         if($this->model('CategoryModel')->updateCategory($_POST, $id) > 0) {
+            Flasher::setFlash("Category updated successfully", "success");
             redirect('category/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Category updated failed", "danger");
         }
     }
 
     public function destroy($id)
     {
         if($this->model('CategoryModel')->destroyCategory($id) > 0) {
+            Flasher::setFlash("Category deleted successfully", "success");
             redirect('category/index');
         } else {
-            var_dump("Error");
+            Flasher::setFlash("Category deleted failed", "danger");
         }
     }
 }
