@@ -1,3 +1,8 @@
+<form action="<?= BASE_URL ?>/home/index" class="d-flex mb-3">
+    <input type="text" class="form-control" name="search_query" placeholder="Search post here...">
+    <button class="btn btn-dark ms-3" type="submit">Search</button>
+</form>
+
 <div class="row g-4">
     <?php foreach($data['posts'] as $post) : ?>
         <div class="col-4">
