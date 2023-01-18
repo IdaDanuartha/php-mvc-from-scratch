@@ -32,7 +32,7 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">          
           <li class="nav-item">
-            <a class="nav-link <?= (URL == BASE_URL . '/' || URL == BASE_URL . '/home/index') ? 'active' : ''; ?>" aria-current="page" href="<?= BASE_URL ?>">
+            <a class="nav-link <?= (URL == BASE_URL . '/' || URL == BASE_URL . '/dashboard/index') ? 'active' : ''; ?>" aria-current="page" href="<?= BASE_URL ?>">
               <span data-feather="home" class="align-text-bottom"></span>
               Dashboard
             </a>
@@ -60,3 +60,6 @@
     </nav>
 
     <main class="mt-4 me-4 w-75">
+    <div class="mb-3">
+      <?php Flasher::flash(); ?>
+    </div>

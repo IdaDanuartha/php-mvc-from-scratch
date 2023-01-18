@@ -13,11 +13,9 @@
         <div class="form-wrapper">
             <div class="form-container">
             <h1> Please Login</h1>
-            <?php if($data['message']) : ?>
-                <div class="alert-danger" role="alert">
-                    <?= $data['message'] ?>
-                </div>
-            <?php endif; ?>
+            <div>
+                <?php Flasher::flash(); ?>
+            </div>
             <form action="<?= BASE_URL ?>/auth/loginprocess" method="post">
                 <div class="form-control">
                     <input type="text" required name="email">

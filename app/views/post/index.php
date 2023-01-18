@@ -11,7 +11,6 @@
         <th scope="col">Category</th>
         <th scope="col">Author</th>
         <th scope="col">Published at</th>
-        <th scope="col">Last updated</th>
         <th scope="col">Action</th>
         </tr>
     </thead>
@@ -24,7 +23,6 @@
                     <td><?= $post['category_name'] ?></td>
                     <td><?= $post['author'] ?></td>
                     <td><?= date_format(date_create($post['created_at']), "d M Y H:i:s"); ?></td>
-                    <td><?= date_format(date_create($post['updated_at']), "d M Y H:i:s"); ?></td>
                     <td>
                         <a href="<?= BASE_URL ?>/post/edit/<?= $post['id'] ?>" class="btn btn-warning btn-sm me-2">Edit</a>
                         <a href="<?= BASE_URL ?>/post/destroy/<?= $post['id'] ?>" onclick="return confirm('Are you sure you want to delete this post?')" class="btn btn-danger btn-sm">Delete</a>
