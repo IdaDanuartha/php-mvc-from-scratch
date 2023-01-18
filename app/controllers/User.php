@@ -3,7 +3,7 @@
 class User extends Controller {
     public function index()
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "User page";
             $data['users'] = $this->model('UserModel')->getUsers();
             

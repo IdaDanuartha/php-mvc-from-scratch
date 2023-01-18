@@ -4,7 +4,7 @@ class Auth extends Controller {
     public function login()
     {
         // $_SESSION['isLogged'] = false;
-        if(!$_SESSION['isLogged']) {
+        if(!isset($_SESSION['isLogged'])) {
             $data['title'] = "Login page";
             $data['message'] = "";
         
@@ -17,7 +17,7 @@ class Auth extends Controller {
     public function register()
     {    
         // $_SESSION['isLogged'] = false;
-        if(!$_SESSION['isLogged']) {
+        if(!isset($_SESSION['isLogged'])) {
             $data['title'] = "Register page";
             $data['message'] = "";
         
@@ -71,7 +71,9 @@ class Auth extends Controller {
 
     public function logout()
     {
-        $_SESSION['isLogged'] = false;
+        session_destroy();
+        unset($_SESSION['isLogged']);
+        
         redirect('auth/login');
     }
 

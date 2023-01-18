@@ -3,7 +3,7 @@
 class Category extends Controller {
     public function index()
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Category page";
             $data['categories'] = $this->model('CategoryModel')->getCategories();
             
@@ -17,7 +17,7 @@ class Category extends Controller {
 
     public function create()
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Add Category";
         
             $this->view('templates/header', $data);
@@ -39,7 +39,7 @@ class Category extends Controller {
 
     public function edit($id)
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Edit Post";
             $data['category'] = $this->model('CategoryModel')->getCategory($id);
             

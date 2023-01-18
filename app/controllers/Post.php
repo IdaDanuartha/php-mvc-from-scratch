@@ -3,7 +3,7 @@
 class Post extends Controller {
     public function index()
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Post page";
             $data['posts'] = $this->model('PostModel')->getPosts();
             
@@ -17,7 +17,7 @@ class Post extends Controller {
 
     public function create()
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Add Post";
             $data['categories'] = $this->model('CategoryModel')->getCategories();
             
@@ -40,7 +40,7 @@ class Post extends Controller {
 
     public function edit($id)
     {
-        if($_SESSION['isLogged']) {
+        if(isset($_SESSION['isLogged'])) {
             $data['title'] = "Edit Post";
             $data['categories'] = $this->model('CategoryModel')->getCategories();
             $data['post'] = $this->model('PostModel')->getPost($id);
