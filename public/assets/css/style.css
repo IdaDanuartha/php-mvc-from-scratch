@@ -22,6 +22,99 @@ main {
     border: 2px solid #5fa58c;
 }
 
+.login-form {
+  margin: 50px auto;
+  padding: 40px 50px;
+  max-width: 300px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .1);
+}
+  .login-form input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 14px 12px;
+    font-size: 16px;
+    border-radius: 2px; 
+    font-family: Raleway, sans-serif;
+  }
+
+.login-form input[type=text],
+.login-form input[type=password] {
+  border: 1px solid #c0c0c0;
+  transition: .2s;
+}
+
+.login-form input[type=text]:hover {
+  border-color: #F44336;
+  outline: none;
+  transition: all .2s ease-in-out;
+} 
+
+.login-form input[type=submit] {
+  border: none;
+  background: #EF5350;
+  color: white;
+  font-weight: bold;  
+  transition: 0.2s;
+  margin: 20px 0px;
+}
+
+.login-form input[type=submit]:hover {
+  background: #F44336;  
+}
+
+  .login-form h2 {
+    margin: 20px 0 0; 
+    color: #EF5350;
+    font-size: 28px;
+  }
+
+.login-form p {
+  margin-bottom: 40px;
+}
+
+.links {
+  display: table;
+  width: 100%;  
+  box-sizing: border-box;
+  border-top: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+}
+
+.links a {
+  display: table-cell;
+  padding-top: 10px;
+}
+
+.links a:first-child {
+  text-align: left;
+}
+
+.links a:last-child {
+  text-align: right;
+}
+
+  .login-form h2,
+  .login-form p,
+  .login-form a {
+    text-align: center;    
+  }
+
+.login-form a {
+  text-decoration: none;  
+  font-size: .8em;
+}
+
+.login-form a:visited {
+  color: inherit;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
+}
   
 @media (max-width: 768px) {
 main {

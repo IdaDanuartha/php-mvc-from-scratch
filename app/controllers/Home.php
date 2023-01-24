@@ -2,9 +2,9 @@
 
 class Home extends Controller {
     public function index()
-    {
+    {        
         $data['title'] = "Home page";
-        $data['posts'] = $this->model('PostModel')->getPosts();
+        $data['posts'] = $this->model('PostModel')->getPosts(isset($_POST['q']) ? $_POST['q'] : '');
         
         $this->view('templates/home_header', $data);
         $this->view('home/index', $data);

@@ -4,40 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/auth.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 
     <title><?= $data['title'] ?> | PWPB PHP MVC</title>
 </head>
 <body>
-    <div class="login-form-bd">
-        <div class="form-wrapper">
-            <div class="form-container">
-            <h1> Create New Account</h1>
-            <div>
-                <?php Flasher::flash(); ?>
-            </div>
-            <form action="<?= BASE_URL ?>/auth/registerprocess" method="post">
-                <div class="form-control">
-                    <input type="text" required name="name">
-                    <label> Full name</label>
-                </div>
-
-                <div class="form-control">
-                    <input type="email" required name="email">
-                    <label> Email</label>
-                </div>
-
-                <div class="form-control">
-                    <input type="password" required name="password">
-                    <label> Password</label>
-                </div>
-
-                <button class="login-btn" type="submit">Create Account</button>
-                <p class="text">Already have an account? <a href="<?= BASE_URL ?>/auth/login"> Login</a></p>
-            </form>
-            </div>
+    <form class="login-form" action="<?= BASE_URL ?>/auth/registerprocess" method="post">
+        <h2>Create New Account</h2>
+        <p>Please sign up</p>
+        <div>
+            <?php Flasher::flash(); ?>
         </div>
-    </div>
+        <input type="text" required name="name" placeholder="Name" />
+        <input type="text" required name="email" placeholder="Email" />
+        <input type="password" required name="password" placeholder="Password" />
+        <input type="submit" value="Sign Up" />
+        <div class="links">
+        <span>Already have an account?</span>
+            <a href="<?= BASE_URL ?>/auth/login">Please login</a>
+        </div>
+    </form>
 
     <script src="<?= BASE_URL ?>/assets/js/auth.js"></script>
 </body>

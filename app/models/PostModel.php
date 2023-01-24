@@ -10,16 +10,19 @@ class PostModel {
         $this->db = new Database();
     }
 
-    public function getPosts()
+    public function getPosts($q)
     {
         $query = "SELECT {$this->table}.*, {$this->table2}.name AS category_name , {$this->table3}.name AS author 
                     FROM {$this->table} 
                     INNER JOIN {$this->table2} 
                     ON {$this->table2}.id = {$this->table}.category_id
                     INNER JOIN {$this->table3} 
-                    ON {$this->table3}.id = {$this->table}.user_id";
+                    ON {$this->table3}.id = {$this->table}.user_id
+                    WHERE {$this->table}.title LIKE :query";
 
         $this->db->query($query);
+        $this->db->bind('query', "%$q%");
+
         return $this->db->all();
     }
 
